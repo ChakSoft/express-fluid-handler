@@ -135,3 +135,17 @@ test('Handling all callbacks', async (done) => {
   expect(result.env).toBe('test')
   done()
 })
+
+test('Handling with prevent global', async (done) => {
+  Handler.addBefore((req) => {
+    req.env = 'test'
+    return req
+  })
+  const result = await (Handler((req) => {
+    return Promise.resolve(req.env || 'dummy env')
+  }, {
+    preventGlobal : true
+  })(fakeRequest, fakeResponse))
+  expect(result).toBe('dummy env')
+  done()
+})
