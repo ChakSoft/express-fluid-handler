@@ -29,7 +29,7 @@ router.get('/', Handler((req) => {
 | `options` | Optional callbacks applied before or after the main `callback`
 | `options.before(req)` | `Function` called just before the `callback` is called. It takes the request object in first and only argument. This function **MUST** return the request object.
 | `options.after(req, result)` | `Function` called just after the `callback` has been called. It takes the request object and the result of the `callback` as arguments. This function **MUST** return the result.
-| `options.preventGlobal` | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks are executed only with this option to `true`.
+| `options.preventGlobal` | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks only are executed with this option to `true`.
 
 `Handler.addBefore(callback)`
 
