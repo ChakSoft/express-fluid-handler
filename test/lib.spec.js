@@ -149,3 +149,11 @@ test('Handling with prevent global', async (done) => {
   expect(result).toBe('dummy env')
   done()
 })
+
+test('Handling with object', async (done) => {
+  const result = await (Handler(() => {
+    return { test : 'succeed' }
+  })(fakeRequest, fakeResponse))
+  expect(result).toHaveProperty('test', 'succeed')
+  done()
+})
