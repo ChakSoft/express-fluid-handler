@@ -1,4 +1,5 @@
 # express-fluid-handler
+
 Fluid Request Response ExpressJS handler
 
 ## Installation
@@ -14,31 +15,35 @@ const Handler = require('express-fluid-handler')
 const { Router } = require('express')
 
 const router = Router()
-router.get('/', Handler((req) => {
-  // Do some logic and return a result.
-}))
+router.get(
+  '/',
+  Handler(req => {
+    // Do some logic and return a result.
+  })
+)
 ```
 
 ## Reference
 
 `Handler(callback, [options])`
 
-| Option | Description
-| ------ | -----------
-| `callback` | Mandatory callback which returns the result to be sent into the response
-| `options` | Optional callbacks applied before or after the main `callback`
-| `options.before(req)` | `Function` called just before the `callback` is called. It takes the request object in first and only argument. This function **MUST** return the request object.
-| `options.after(req, result)` | `Function` called just after the `callback` has been called. It takes the request object and the result of the `callback` as arguments. This function **MUST** return the result.
-| `options.preventGlobal` | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks only are executed with this option to `true`.
-| `options.error` | `Function` called whether an error occured in one of the given callbacks.
+| Option                       | Description                                                                                                                                                                       |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `callback`                   | Mandatory callback which returns the result to be sent into the response                                                                                                          |
+| `options`                    | Optional callbacks applied before or after the main `callback`                                                                                                                    |
+| `options.before(req)`        | `Function` called just before the `callback` is called. It takes the request object in first and only argument. This function **MUST** return the request object.                 |
+| `options.after(req, result)` | `Function` called just after the `callback` has been called. It takes the request object and the result of the `callback` as arguments. This function **MUST** return the result. |
+| `options.preventGlobal`      | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks only are executed with this option to `true`.         |
+| `options.error`              | `Function` called whether an error occured in one of the given callbacks.                                                                                                         |
+| `options.intermediate`       |  `Boolean` which determines if the given handler must stream a response or call the `next` callback of the express middleware system.                                             |
 
 `Handler.addBefore(callback)`
 
-Adds a global before callback, which is applied before `options.before` callback. You can add as many *before* callbacks as you want, but ensure they all returns the request object.
+Adds a global before callback, which is applied before `options.before` callback. You can add as many _before_ callbacks as you want, but ensure they all returns the request object.
 
 ̀`Handler.addAfter(callback)`
 
-Adds a global after callback, which is applied just before the result is sent into the Express response object. You can add as many *after* callbacks as you want, but ensure they all returns the result.
+Adds a global after callback, which is applied just before the result is sent into the Express response object. You can add as many _after_ callbacks as you want, but ensure they all returns the result.
 
 > Whatever they are before or after callbacks, they are executed in the exact same order as they have been added.
 
