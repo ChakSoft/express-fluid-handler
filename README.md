@@ -36,6 +36,7 @@ router.get(
 | `options.preventGlobal`      | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks only are executed with this option to `true`.         |
 | `options.error`              | `Function` called whether an error occured in one of the given callbacks.                                                                                                         |
 | `options.intermediate`       |  `Boolean` which determines if the given handler must stream a response or call the `next` callback of the express middleware system.                                             |
+| `options.headers`            | Specify custom headers to set into the response                                                                                                                                   |
 
 `Handler.addBefore(callback)`
 
