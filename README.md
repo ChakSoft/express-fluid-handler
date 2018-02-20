@@ -27,16 +27,16 @@ router.get(
 
 `Handler(callback, [options])`
 
-| Option                       | Description                                                                                                                                                                       |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `callback`                   | Mandatory callback which returns the result to be sent into the response                                                                                                          |
-| `options`                    | Optional callbacks applied before or after the main `callback`                                                                                                                    |
-| `options.before(req)`        | `Function` called just before the `callback` is called. It takes the request object in first and only argument. This function **MUST** return the request object.                 |
-| `options.after(req, result)` | `Function` called just after the `callback` has been called. It takes the request object and the result of the `callback` as arguments. This function **MUST** return the result. |
-| `options.preventGlobal`      | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks only are executed with this option to `true`.         |
-| `options.error`              | `Function` called whether an error occured in one of the given callbacks.                                                                                                         |
-| `options.intermediate`       |  `Boolean` which determines if the given handler must stream a response or call the `next` callback of the express middleware system.                                             |
-| `options.headers`            | Specify custom headers to set into the response                                                                                                                                   |
+| Option                       | Description                                                                                                                                                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `callback`                   | Mandatory callback which returns the result to be sent into the response                                                                                                                    |
+| `options`                    | Optional callbacks applied before or after the main `callback`                                                                                                                              |
+| `options.before(req)`        | `Function` called just before the `callback` is called. It takes the request object in first and only argument. This function **MUST** return the request object.                           |
+| `options.after(req, result)` | `Function` called just after the `callback` has been called. It takes the request object and the result of the `callback` as arguments. This function **MUST** return the result.           |
+| `options.preventGlobal`      | `Boolean` which determines if the given handler execution must avoid global `before` and `after` callbacks. Local callbacks only are executed with this option to `true`.                   |
+| `options.error`              | `Function` called whether an error occured in one of the given callbacks.                                                                                                                   |
+| `options.intermediate`       |  `Boolean` which determines if the given handler must stream a response or call the `next` callback of the express middleware system.                                                       |
+| `options.headers`            | Can be either a function or an object. Specify custom headers to set into the response. The response takes the result as first argument and must return an object with the list of headers. |
 
 `Handler.addBefore(callback)`
 
