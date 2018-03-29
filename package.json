@@ -1,6 +1,6 @@
 {
   "name": "express-fluid-handler",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "ExpressJS generic interface handler for requests",
   "main": "lib/index.js",
   "scripts": {
